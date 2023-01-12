@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h1 class="text-center">Todo App</h1>
+<hr>
+<br>
+<h2 class="text-center">Add a new task</h2>
+
+<form method="POST" class="row g-3">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {% for field in form %}
+    <div class="col-md-6">
+      <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+      {{ field }}
+    </div>
+  {% endfor %}
+</form>
+
+
+
+<script>
+  labels = document.querySelectorAll('label');
+  labels.forEach(label => {
+    label.classList.add('form-label');
+  });
+</script>
+
+{% endblock %}
