@@ -1,0 +1,13 @@
+services:
+  todoapp:
+    container_name: todoapp
+    build: . 
+    ports: 
+      - 8000:8000
+    volumes:
+      - .:/app
+    
+networks:
+  default:
+    name: development
+    external: True
